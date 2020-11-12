@@ -1,0 +1,28 @@
+.proposals {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .promotions-proposal,
+  .bestseller-proposal,
+  .outlet-proposal {
+    width: 90%;
+    margin: 1rem 0;
+    background-color: $moda-skin;
+    // border: 2px solid $moda-bronze;
+    box-shadow: 0 0 4px 5px $moda-bronze;
+    p {
+      font-family: $font-logo;
+    }
+    img {
+      padding: 0.5rem;
+      //   box-shadow: ;
+      width: 100%;
+    }
+  }
+}

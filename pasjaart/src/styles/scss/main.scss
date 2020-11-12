@@ -1,0 +1,21 @@
+// CDN FONTAWESOME
+// <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+//
+// Sass:
+// https://fontawesome.com/how-to-use/on-the-web/using-with/sass
+
+@import "config/reset";
+@import "config/variables";
+@import "config/widths";
+@import "config/mixins";
+@import "config/colors";
+@import "config/typography";
+
+//elements
+@import "elements/hamburgers";
+// @import "path/to/hamburgers";
+
+//layout
+@import "layout/navigation.scss";
+@import "layout/MainPage.scss";
+@import "layout/Footer.scss";

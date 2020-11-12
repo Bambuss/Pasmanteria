@@ -1,0 +1,52 @@
+.footer {
+  width: 100%;
+  background-color: $moda-violet;
+  box-shadow: 0px 0px 4px 5px rgba(24, 24, 24, 0.664);
+
+  &-info,
+  &-about,
+  &-shipping,
+  &-help {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    padding: 1rem 3rem;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      left: 10%;
+      top: 100%;
+      content: "";
+      width: 80%;
+      height: 1px;
+      background-color: $moda-pink-clean;
+    }
+    .footer-layer {
+      width: 100%;
+    }
+    span {
+      color: $moda-pink;
+      float: left;
+      font-weight: 600;
+    }
+    ul {
+      margin: 0.5rem;
+      flex-direction: column;
+      transition: 0.2s ease-out;
+      li {
+        padding: 0.5rem;
+        span {
+          text-shadow: none;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  .footer-btn {
+    color: $moda-pink;
+    float: right;
+    transition: 200ms;
+  }
+}

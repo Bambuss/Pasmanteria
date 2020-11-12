@@ -1,0 +1,46 @@
+// $color-nav: #5b605f; //panel boczny, nawigacja
+// $color-gray: #4a4a49; //nagłówek, , kolor tekstu w kolumnach
+// $color-orange: #ff6600; //przyciski, wyróżnienia, nagłówki ekranów
+// $color-background: #fffffa; //kolor tła ekranów
+// $color-info: #3498db; //kolor wiadomości typu info,
+// $color-warning: #ffb03b; // kolor wiadomości typu warning
+// $color-succes: #468966; //kolor wiadomości typu success
+// $color-bin: #bd4932; //kolor ikony kosza
+// $color-text: #a1a194; //kolor tekstu z wierszy w tabelach, ikony rozszerzonych funkcji
+
+$color-nav: #3d5a80; //panel boczny, nawigacja
+$color-gray: #293241; //nagłówek, , kolor tekstu w kolumnach
+$color-orange: #ee6c4d; //przyciski, wyróżnienia, nagłówki ekranów
+$color-background: #fffffa; //kolor tła ekranów
+$color-info: #39aaf6; //kolor wiadomości typu info,
+$color-warning: #f6aa39; // kolor wiadomości typu warning
+$color-succes: #468966; //kolor wiadomości typu success
+$color-bin: #bd4932; //kolor ikony kosza
+$color-text: #587dad; //kolor tekstu z wierszy w tabelach, ikony rozszerzonych funkcji
+
+/* Color Theme Swatches in Hex */
+$moda-pink: #c5acdb;
+$moda-pink-clean: #c5acdb34;
+$moda-blue: #bcadd9;
+$moda-violet: #32243d;
+$moda-skin: #d9ac9c;
+$moda-bronze: #5a3936;
+
+/* Color Theme Swatches in RGBA */
+$Moda-1-rgba: rgba(216, 82, 145, 1);
+$Moda-2-rgba: rgba(173, 196, 216, 1);
+$Moda-3-rgba: rgba(121, 140, 81, 1);
+$Moda-4-rgba: rgba(216, 172, 156, 1);
+$Moda-5-rgba: rgba(165, 101, 96, 1);
+
+/* Color Theme Swatches in HSLA */
+$Moda-1-hsla: hsla(331, 63, 58, 1);
+$Moda-2-hsla: hsla(208, 36, 76, 1);
+$Moda-3-hsla: hsla(78, 26, 43, 1);
+$Moda-4-hsla: hsla(16, 44, 73, 1);
+$Moda-5-hsla: hsla(5, 28, 51, 1);
+
+body {
+  background-image: url(../../../resources/images/boho1.jpg);
+  background-attachment: fixed;
+}
