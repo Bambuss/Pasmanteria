@@ -160,11 +160,13 @@ a {
   }
   .header li {
     float: left;
+    height: 100%;
   }
   .header li a {
     padding: 20px 30px;
     border-right: $moda-violet 1px solid;
     border-top: none;
+    height: 100%;
     &:hover {
       border-bottom: $moda-violet 2px solid;
     }
@@ -174,6 +176,7 @@ a {
     float: right;
     max-height: none;
     background-color: unset;
+    height: 64px;
   }
   .header .menu-icon {
     display: none;

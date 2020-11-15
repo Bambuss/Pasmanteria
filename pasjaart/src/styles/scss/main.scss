@@ -13,9 +13,9 @@
 
 //elements
 @import "elements/hamburgers";
-// @import "path/to/hamburgers";
-
+@import "elements/productBoxSmall"; // @import "path/to/hamburgers";
 //layout
 @import "layout/navigation.scss";
 @import "layout/MainPage.scss";
 @import "layout/Footer.scss";
+@import "layout/ProductPage.scss";

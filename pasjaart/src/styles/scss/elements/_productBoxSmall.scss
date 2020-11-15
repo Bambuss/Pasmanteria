@@ -1,0 +1,45 @@
+.box1 {
+  height: 300px;
+  width: 13rem;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  .product-photo {
+    background-image: url(../../../resources/images/logo.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 180px;
+    height: 130px;
+  }
+  .product-title {
+    width: 97%;
+    font-size: 1rem;
+    padding: 1.2rem 0.3rem;
+    padding-top: 0.6rem;
+    border-bottom: 1px dotted $moda-bronze;
+  }
+  .product-price {
+    width: 97%;
+    font-size: 1rem;
+    padding: 1.2rem 0.3rem;
+    border-bottom: 1px dotted $moda-bronze;
+  }
+  .product-buy {
+    display: flex;
+    max-width: 100%;
+    margin: 1.2rem 0.3rem;
+    input {
+      width: 3rem;
+      margin-right: 1rem;
+    }
+    .buy-btn-sm {
+      background-color: $moda-skin;
+      color: $moda-bronze;
+      font-weight: 600;
+      border: 1px solid $moda-bronze;
+    }
+  }
+}

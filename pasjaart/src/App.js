@@ -5,6 +5,7 @@ import Header from "./js/Header";
 import "./fontawesome";
 import MainPage from "./js/MainPage";
 import Footer from "./js/Footer";
+import ProductPage from "./js/views/ProductPage";
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
             <MainPage />
           </Route>
 
-          <Route path="/header"></Route>
+          <Route path="/product1">
+            <ProductPage />
+          </Route>
         </Switch>
         <Footer />
       </div>
