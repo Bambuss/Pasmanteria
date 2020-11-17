@@ -42,7 +42,7 @@ function Header() {
             </div> */}
 
             <input className="menu-btn" type="checkbox" id="menu-btn" />
-            <label className="menu-icon" for="menu-btn">
+            <label className="menu-icon" htmlFor="menu-btn">
               <span className="navicon"></span>
             </label>
 
@@ -53,22 +53,22 @@ function Header() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/wool" activeStyle={activeStyle}>
+                <NavLink to="/Włóczki" activeStyle={activeStyle}>
                   Włóczki
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/textil" activeStyle={activeStyle}>
+                <NavLink to="/Tkaniny" activeStyle={activeStyle}>
                   Tkaniny
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/thread" activeStyle={activeStyle}>
+                <NavLink to="/Kordonki_i_nici" activeStyle={activeStyle}>
                   Kordonki i nici
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/habdash" activeStyle={activeStyle}>
+                <NavLink to="/Pasmanteria" activeStyle={activeStyle}>
                   pasmanteria
                 </NavLink>
               </li>

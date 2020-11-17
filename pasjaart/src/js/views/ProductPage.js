@@ -1,18 +1,74 @@
 import React, { useState } from "react";
 import image1 from "../../resources/images/logo.jpg";
 import image2 from "../../resources/images/minii.jpg";
-
-function ProductPage() {
+import { db, storage } from "../config/firebase";
+function ProductPage(props) {
   const [image, setImage] = useState(image1);
 
   const handleClick1 = () => {
-    setImage(image1);
+    setImage(props.photoFirst);
   };
   const handleClick2 = () => {
-    setImage(image2);
+    setImage(props.photoSecond);
   };
-  const productPrice = 12.0;
+  // const productPrice = 12.1;
+  // const productQuantity = 50;
 
+  // db.collection("products")
+  //   .get()
+  //   .then(function (querySnapshot) {
+  //     querySnapshot.forEach(function (doc) {
+  //       // doc.data() is never undefined for query doc snapshots
+  //       console.log(doc.id, " => ", doc.data());
+  //     });
+  //   })
+  //   .catch(function (error) {
+  //     console.log("Error getting documents: ", error);
+  //   });
+
+  //animacja przycisku
+  var animateButton = function (e) {
+    e.preventDefault();
+    //reset animation
+    e.target.classList.remove("animate");
+
+    e.target.classList.add("animate");
+    setTimeout(function () {
+      e.target.classList.remove("animate");
+    }, 700);
+  };
+
+  // var bubblyButtons = document.getElementsByClassName("bubbly-button");
+
+  // for (var i = 0; i < bubblyButtons.length; i++) {
+  //   bubblyButtons[i].addEventListener("click", animateButton, false);
+  // }
+  const DisabledButton = () => {
+    if (props.quantity <= 1) {
+      return (
+        <button
+          disabled
+          style={{
+            backgroundColor: `#d9ac9c`,
+            textDecoration: "line-through",
+            color: "#5a3936",
+            border: `1px solid #5a3936`,
+            boxShadow: `inset 0px 0px 5px 2px #5a3936`,
+          }}
+          className="bubbly-button buy-btn-sm"
+          onClick={animateButton}
+        >
+          DODAJ DO KOSZYKA
+        </button>
+      );
+    } else {
+      return (
+        <button className="bubbly-button buy-btn-sm" onClick={animateButton}>
+          DODAJ DO KOSZYKA
+        </button>
+      );
+    }
+  };
   return (
     <section className="product-page">
       <div className="container">
@@ -22,14 +78,35 @@ function ProductPage() {
               <img src={image} alt="photo-big" />
             </div>
             <div className="product-photo-secondary">
-              <img src={image1} alt="obraz1" onClick={handleClick1} />
-              <img src={image2} alt="obraz2" onClick={handleClick2} />
+              <img src={props.photoFirst} alt="obraz1" onClick={handleClick1} />
+              <img
+                src={props.photoSecond}
+                alt="obraz2"
+                onClick={handleClick2}
+              />
             </div>
           </div>
           <h3 className="product-title">
-            Przykładowa włóczka <span>Numer katalogowy</span>
+            {props.name} <span>Numer katalogowy: {props.colorNumber}</span>
           </h3>
-          <h4 className="product-">Cena: {productPrice}zł</h4>
+          <h4 className="product-price">Cena: {props.price}zł</h4>
+
+          <div className="product-buy-box">
+            <div className="buy-box-quant">
+              <p>Ilość:</p>
+              <input type="number" />
+              <p>szt.</p>
+            </div>
+            <DisabledButton />
+          </div>
+          <strong>Dostępna ilość: {props.quantity} szt.</strong>
+          <h5>Opis produktu</h5>
+          <p className="product-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, ex
+            delectus aspernatur officia quae asperiores obcaecati mollitia
+            corporis ut accusamus aperiam. Dolores consectetur nam esse
+            blanditiis vel id necessitatibus expedita.
+          </p>
         </div>
       </div>
     </section>

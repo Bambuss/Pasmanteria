@@ -28,10 +28,10 @@ a {
 .header {
   height: 320px;
   background-image: url(../../../resources/images/background.jpg);
-  background-size: 235%;
-  background-position: bottom;
   background-repeat: no-repeat;
   box-shadow: 5px 5px 5px 2px rgba(24, 24, 24, 0.664);
+  background-size: cover;
+  background-position: center;
 }
 
 .navigation {
@@ -156,7 +156,8 @@ a {
     background-color: $moda-pink;
   }
   .header {
-    background-size: 100%;
+    background-size: cover;
+    background-position: center;
   }
   .header li {
     float: left;

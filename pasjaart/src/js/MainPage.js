@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,8 +8,28 @@ import image2 from "../resources/images/k2.jpg";
 import image3 from "../resources/images/k3.jpg";
 import "../styles/App.scss";
 import ProductBoxSmall from "./Elements/productBoxSmall";
-
+import { db, storage } from "./config/firebase";
 function MainPage() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    db.collection("products")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          // console.log(doc.id, " => ", doc.data());
+          const data = doc.data();
+          const id = doc.id;
+          setProducts((prevState) => [...prevState, { ...data, id }]);
+        });
+      })
+      .catch(function (error) {
+        console.log("Error getting documents: ", error);
+      });
+  }, []);
+
+  console.log(products);
+  // console.log(products.id);
+
   return (
     <section className="proposals">
       <div className="container">
@@ -35,10 +55,16 @@ function MainPage() {
         <div className="new-added">
           <p>Nowo dodane</p>
           <div className="new-added-box">
-            <ProductBoxSmall />
-            <ProductBoxSmall />
-            <ProductBoxSmall />
-            <ProductBoxSmall />
+            {products.map((product) => (
+              <ProductBoxSmall
+                key={product.id}
+                link={product.id}
+                photo={storage.refFromURL(product.photos[0])}
+                name={product.name}
+                colorNumber={product.catalogNumber}
+                price={product.price}
+              />
+            ))}
           </div>
         </div>
       </div>
