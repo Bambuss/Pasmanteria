@@ -5,12 +5,22 @@ import { db, storage } from "../config/firebase";
 function ProductPage(props) {
   const [image, setImage] = useState(image1);
 
-  const handleClick1 = () => {
-    setImage(props.photoFirst);
+  const handleClick = (i) => {
+    setImage(props.photos[i]);
   };
   const handleClick2 = () => {
     setImage(props.photoSecond);
   };
+  const funct = storage
+    .refFromURL("gs://skleppasjaart.appspot.com/Testy/004a.jpg")
+    .getDownloadURL()
+    .then(function (url) {
+      let array = [url];
+      console.log(array);
+    });
+
+  console.log(funct);
+
   // const productPrice = 12.1;
   // const productQuantity = 50;
 
@@ -78,16 +88,32 @@ function ProductPage(props) {
               <img src={image} alt="photo-big" />
             </div>
             <div className="product-photo-secondary">
-              <img src={props.photoFirst} alt="obraz1" onClick={handleClick1} />
-              <img
+              {/* <img src={props.photoFirst} alt="obraz1" onClick={handleClick1} /> */}
+
+              {props.photos.map((photo) => {
+                return (
+                  <img
+                    key={photo}
+                    src={storage
+                      .refFromURL(photo)
+                      .getDownloadURL()
+                      .then(function (url) {
+                        return url;
+                      })}
+                    alt={`${photo}`}
+                    onClick={handleClick}
+                  />
+                );
+              })}
+              {/* <img
                 src={props.photoSecond}
                 alt="obraz2"
                 onClick={handleClick2}
-              />
+              /> */}
             </div>
           </div>
           <h3 className="product-title">
-            {props.name} <span>Numer katalogowy: {props.colorNumber}</span>
+            {props.name} <span>Kolor: {props.colorNumber}</span>
           </h3>
           <h4 className="product-price">Cena: {props.price}zł</h4>
 

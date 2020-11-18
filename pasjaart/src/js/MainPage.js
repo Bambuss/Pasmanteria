@@ -25,7 +25,26 @@ function MainPage() {
       .catch(function (error) {
         console.log("Error getting documents: ", error);
       });
+    // products.forEach((product) => {
+    //   console.log(product.photos);
+    // });
   }, []);
+
+  // useEffect(() => {
+  //   products.forEach((product) => {
+  //     console.log(product.photos);
+  //     product.photos.forEach((photo) => {
+  //       storage
+  //         .refFromURL(photo)
+  //         .getDownloadURL()
+
+  //     });
+  //   });
+  // }, [products]);
+
+  // products.forEach((product) => {
+  //   console.log(product.photos);
+  // });
 
   console.log(products);
   // console.log(products.id);

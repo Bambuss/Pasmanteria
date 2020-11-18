@@ -12,23 +12,50 @@ import YarnPage from "./js/views/YarnPage";
 import TextillPage from "./js/views/TextillPage";
 import ThreadPage from "./js/views/ThreadPage";
 import HaberdasheryPage from "./js/views/HaberdasheryPage";
+import firebase from "firebase";
 
 function App() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     db.collection("products")
       .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          // console.log(doc.id, " => ", doc.data());
-          const data = doc.data();
-          const id = doc.id;
-          setProducts((prevState) => [...prevState, { ...data, id }]);
+      .then((snapshot) => {
+        const storage = firebase.storage();
+        const storageRef = storage.ref();
+        const promises = snapshot.docs.map((doc) => {
+          storageRef.child(doc.data().photos[0]).getDownloadURL();
         });
-      })
-      .catch(function (error) {
-        console.log("Error getting documents: ", error);
+        Promise.all(promises).then((downloadURLs) => {
+          const newProduct = snapshot.docs.forEach((doc, index) => ({
+            id: doc.id,
+            ...doc.data(),
+            getDownloadURLs: downloadURLs[index],
+          }));
+          setProducts(newProduct);
+        });
       });
+    // .collection("products")
+    //   .get()
+    //   .then((querySnapshot) => {
+    //     querySnapshot.forEach((doc, i) => {
+    //       // console.log(doc.id, " => ", doc.data());
+    //       const data = doc.data();
+    //       const id = doc.id;
+
+    //       doc.data().photos.forEach((photo)=>{
+    //       storage
+    //         .refFromURL(photo)
+    //         .getDownloadURL()
+    //         .then(function (url) {
+
+    //         });
+    //       })
+    //       setProducts((prevState) => [...prevState, { ...data, id }]);
+    //     });
+    //   })
+    // .catch(function (error) {
+    //   console.log("Error getting documents: ", error);
+    // });
   }, []);
 
   return (
@@ -60,8 +87,7 @@ function App() {
             <Route key={product.id} path={`/product${product.id}`}>
               <ProductPage
                 link={product.id}
-                photoFirst={storage.refFromURL(product.photos[0])}
-                photoSecond={storage.refFromURL(product.photos[1])}
+                photos={product.photos}
                 name={product.name}
                 colorNumber={product.catalogNumber}
                 price={product.price}
