@@ -47,7 +47,7 @@ a {
   padding: 0;
   list-style: none;
   overflow: hidden;
-  background-color: $moda-pink-clean;
+  // background-color: $moda-pink-clean;
 }
 
 .header li a {
@@ -70,9 +70,13 @@ a {
   display: block;
   float: left;
   font-size: 1em;
-  //   margin: 10px;
+  margin: 0 auto;
   text-decoration: none;
   height: 4rem;
+}
+.centralize {
+  margin-left: calc(50% - 32px);
+  //   margin-right: 50%;
 }
 
 /* menu */
@@ -149,11 +153,32 @@ a {
   top: 0;
 }
 
+.basket,
+.user,
+.search {
+  float: left;
+  height: 58px;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // text-align: end;
+  margin-left: 5%;
+}
+.basket {
+  margin-left: 20%;
+}
+.search {
+  float: right;
+  margin-left: 0;
+  margin-right: 10%;
+}
+
 /* 48em = 768px */
 
 @media (min-width: 48em) {
   .navigation {
-    background-color: $moda-pink;
+    background-color: $moda-pink-clean;
   }
   .header {
     background-size: cover;

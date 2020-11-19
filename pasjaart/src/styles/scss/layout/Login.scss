@@ -1,0 +1,63 @@
+.login-box {
+  display: flex;
+  flex-direction: column;
+  color: $moda-bronze;
+  width: 80%;
+  .hello {
+    font-size: 1.6rem;
+    margin: 1.4rem auto;
+    margin-bottom: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    // border-bottom: 2px dotted $moda-violet;
+    span {
+      margin: 0.6rem;
+    }
+  }
+  label {
+    text-align: left;
+    margin: 0.8rem 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  input {
+    background: none;
+    border: none;
+    border-bottom: 2px solid $moda-violet;
+    border-left: 2px solid $moda-violet;
+    border-top: 2px solid $moda-skin;
+    border-right: 2px solid $moda-skin;
+    color: $moda-bronze;
+    // box-shadow: 0 0 4px 0 $moda-bronze;
+  }
+  .logButtons {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      margin: 0.2rem 0;
+      width: 45%;
+      font-size: 1rem;
+      font-weight: 600;
+      height: 45px;
+      border-radius: 10px;
+      border: none;
+      padding: 0.2rem;
+    }
+    .crt-acc-btn {
+      background-color: $moda-violet;
+      color: $moda-blue;
+      box-shadow: 0px 0px 10px 3px $moda-blue;
+    }
+    .login-btn {
+      background-color: $moda-blue;
+      color: $moda-violet;
+      box-shadow: 0px 0px 10px 3px $moda-violet;
+    }
+  }
+}
+.margin {
+  height: 200px;
+}

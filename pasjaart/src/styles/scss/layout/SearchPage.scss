@@ -1,0 +1,30 @@
+.search-box-label {
+  font-size: 2rem;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+}
+.search-box {
+  width: 60%;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid $moda-bronze;
+  border-left: 2px solid $moda-bronze;
+  border-top: 2px solid $moda-skin;
+  border-right: 2px solid $moda-skin;
+  color: $moda-bronze;
+}
+.search-btn {
+  margin-top: 4rem;
+  width: 40%;
+  font-size: 1rem;
+  font-weight: 600;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: $moda-blue;
+  color: $moda-violet;
+  box-shadow: 0px 0px 10px 3px $moda-violet;
+}

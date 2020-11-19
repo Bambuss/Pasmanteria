@@ -1,40 +1,12 @@
 import React, { useState } from "react";
-import image1 from "../../resources/images/logo.jpg";
-import image2 from "../../resources/images/minii.jpg";
 import { db, storage } from "../config/firebase";
+
 function ProductPage(props) {
-  const [image, setImage] = useState(image1);
+  const [image, setImage] = useState(props.photos[0]);
 
-  const handleClick = (i) => {
-    setImage(props.photos[i]);
+  const handleClick = (e) => {
+    setImage(e.target.src);
   };
-  const handleClick2 = () => {
-    setImage(props.photoSecond);
-  };
-  const funct = storage
-    .refFromURL("gs://skleppasjaart.appspot.com/Testy/004a.jpg")
-    .getDownloadURL()
-    .then(function (url) {
-      let array = [url];
-      console.log(array);
-    });
-
-  console.log(funct);
-
-  // const productPrice = 12.1;
-  // const productQuantity = 50;
-
-  // db.collection("products")
-  //   .get()
-  //   .then(function (querySnapshot) {
-  //     querySnapshot.forEach(function (doc) {
-  //       // doc.data() is never undefined for query doc snapshots
-  //       console.log(doc.id, " => ", doc.data());
-  //     });
-  //   })
-  //   .catch(function (error) {
-  //     console.log("Error getting documents: ", error);
-  //   });
 
   //animacja przycisku
   var animateButton = function (e) {
@@ -48,11 +20,6 @@ function ProductPage(props) {
     }, 700);
   };
 
-  // var bubblyButtons = document.getElementsByClassName("bubbly-button");
-
-  // for (var i = 0; i < bubblyButtons.length; i++) {
-  //   bubblyButtons[i].addEventListener("click", animateButton, false);
-  // }
   const DisabledButton = () => {
     if (props.quantity <= 1) {
       return (
@@ -68,7 +35,7 @@ function ProductPage(props) {
           className="bubbly-button buy-btn-sm"
           onClick={animateButton}
         >
-          DODAJ DO KOSZYKA
+          BRAK W MAGAZYNIE
         </button>
       );
     } else {
@@ -79,6 +46,7 @@ function ProductPage(props) {
       );
     }
   };
+
   return (
     <section className="product-page">
       <div className="container">
@@ -94,17 +62,18 @@ function ProductPage(props) {
                 return (
                   <img
                     key={photo}
-                    src={storage
-                      .refFromURL(photo)
-                      .getDownloadURL()
-                      .then(function (url) {
-                        return url;
-                      })}
+                    src={photo}
                     alt={`${photo}`}
                     onClick={handleClick}
                   />
                 );
               })}
+              {/* storage
+                      .refFromURL(photo)
+                      .getDownloadURL()
+                      .then(function (url) {
+                        return url;
+                      })} */}
               {/* <img
                 src={props.photoSecond}
                 alt="obraz2"
@@ -113,7 +82,8 @@ function ProductPage(props) {
             </div>
           </div>
           <h3 className="product-title">
-            {props.name} <span>Kolor: {props.colorNumber}</span>
+            {props.name} <p>{props.producent}</p>
+            <span>Kolor: {props.colorNumber}</span>
           </h3>
           <h4 className="product-price">Cena: {props.price}zł</h4>
 

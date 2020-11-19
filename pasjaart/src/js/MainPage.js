@@ -9,14 +9,15 @@ import image3 from "../resources/images/k3.jpg";
 import "../styles/App.scss";
 import ProductBoxSmall from "./Elements/productBoxSmall";
 import { db, storage } from "./config/firebase";
+
 function MainPage() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     db.collection("products")
+      .limit(7)
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          // console.log(doc.id, " => ", doc.data());
           const data = doc.data();
           const id = doc.id;
           setProducts((prevState) => [...prevState, { ...data, id }]);
@@ -25,29 +26,7 @@ function MainPage() {
       .catch(function (error) {
         console.log("Error getting documents: ", error);
       });
-    // products.forEach((product) => {
-    //   console.log(product.photos);
-    // });
   }, []);
-
-  // useEffect(() => {
-  //   products.forEach((product) => {
-  //     console.log(product.photos);
-  //     product.photos.forEach((photo) => {
-  //       storage
-  //         .refFromURL(photo)
-  //         .getDownloadURL()
-
-  //     });
-  //   });
-  // }, [products]);
-
-  // products.forEach((product) => {
-  //   console.log(product.photos);
-  // });
-
-  console.log(products);
-  // console.log(products.id);
 
   return (
     <section className="proposals">
@@ -78,10 +57,12 @@ function MainPage() {
               <ProductBoxSmall
                 key={product.id}
                 link={product.id}
-                photo={storage.refFromURL(product.photos[0])}
+                photo={product.photos[0]}
                 name={product.name}
                 colorNumber={product.catalogNumber}
                 price={product.price}
+                producent={product.producent}
+                quantity={product.quantity}
               />
             ))}
           </div>

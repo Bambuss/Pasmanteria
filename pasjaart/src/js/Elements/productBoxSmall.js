@@ -4,28 +4,27 @@ import { NavLink } from "react-router-dom";
 import { db, storage } from "../config/firebase";
 
 function ProductBoxSmall(props) {
-  //   const productPhoto = ;
-
-  // const [products, setProducts] = useState([]);
-  // useEffect(() => {
-
-  //   db.collection("products")
-  //     .get()
-  //     .then((querySnapshot) => {
-  //       querySnapshot.forEach((doc) => {
-  //         console.log(doc.id, " => ", doc.data());
-  //         setProducts(doc.data())
-  //       });
-  //     })
-  //     .catch(function (error) {
-  //       console.log("Error getting documents: ", error);
-  //     });
-  // }, []);
-
-  // const productTitle = `Włóczka pierwsza kol.000`;
-  // const productPrice = `10.90zł`;
-  //   const productInfo = db.products.wools;
-  //   console.log(productInfo);
+  const DisabledButton = () => {
+    if (props.quantity <= 30) {
+      return (
+        <button
+          disabled
+          style={{
+            backgroundColor: `#d9ac9c`,
+            textDecoration: "line-through",
+            color: "#5a3936",
+            border: `1px solid #5a3936`,
+            boxShadow: `inset 0px 0px 5px 2px #5a3936`,
+          }}
+          className="buy-btn-sm"
+        >
+          BRAK W MAGAZYNIE
+        </button>
+      );
+    } else {
+      return <button className="buy-btn-sm">Do koszyka</button>;
+    }
+  };
 
   return (
     <div className="box" /* key={item.id} */>
@@ -35,12 +34,13 @@ function ProductBoxSmall(props) {
         </div>
       </NavLink>
       <span className="product-title">
-        {props.name} <span>kol. {props.colorNumber}</span>
+        {props.name} <span>{props.producent}</span>{" "}
+        <span>kol. {props.colorNumber}</span>
       </span>
       <span className="product-price">{props.price}zł</span>
       <div className="product-buy">
         <input type="number" />
-        <button className="buy-btn-sm">Do koszyka!</button>
+        <DisabledButton />
       </div>
     </div>
   );

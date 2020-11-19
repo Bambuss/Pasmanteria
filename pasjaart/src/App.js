@@ -13,49 +13,24 @@ import TextillPage from "./js/views/TextillPage";
 import ThreadPage from "./js/views/ThreadPage";
 import HaberdasheryPage from "./js/views/HaberdasheryPage";
 import firebase from "firebase";
+import LogIn from "./js/views/LogIn";
+import SearchPage from "./js/views/SearchPage";
 
 function App() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     db.collection("products")
       .get()
-      .then((snapshot) => {
-        const storage = firebase.storage();
-        const storageRef = storage.ref();
-        const promises = snapshot.docs.map((doc) => {
-          storageRef.child(doc.data().photos[0]).getDownloadURL();
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc, i) => {
+          const data = doc.data();
+          const id = doc.id;
+          setProducts((prevState) => [...prevState, { ...data, id }]);
         });
-        Promise.all(promises).then((downloadURLs) => {
-          const newProduct = snapshot.docs.forEach((doc, index) => ({
-            id: doc.id,
-            ...doc.data(),
-            getDownloadURLs: downloadURLs[index],
-          }));
-          setProducts(newProduct);
-        });
+      })
+      .catch(function (error) {
+        console.log("Error getting documents: ", error);
       });
-    // .collection("products")
-    //   .get()
-    //   .then((querySnapshot) => {
-    //     querySnapshot.forEach((doc, i) => {
-    //       // console.log(doc.id, " => ", doc.data());
-    //       const data = doc.data();
-    //       const id = doc.id;
-
-    //       doc.data().photos.forEach((photo)=>{
-    //       storage
-    //         .refFromURL(photo)
-    //         .getDownloadURL()
-    //         .then(function (url) {
-
-    //         });
-    //       })
-    //       setProducts((prevState) => [...prevState, { ...data, id }]);
-    //     });
-    //   })
-    // .catch(function (error) {
-    //   console.log("Error getting documents: ", error);
-    // });
   }, []);
 
   return (
@@ -92,9 +67,22 @@ function App() {
                 colorNumber={product.catalogNumber}
                 price={product.price}
                 quantity={product.quantity}
+                producent={product.producent}
               />
             </Route>
           ))}
+
+          <Route path="/user">
+            <LogIn />
+          </Route>
+
+          <Route path="/search">
+            <SearchPage />
+          </Route>
+
+          <Route path="/basket">
+            <LogIn />
+          </Route>
         </Switch>
         <Footer />
       </div>

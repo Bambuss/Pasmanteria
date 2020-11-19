@@ -7,6 +7,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  border-radius: 1rem;
+  color: $moda-bronze;
   .product-photo {
     // background-image: url(../../../resources/images/logo.jpg);
     // background-size: cover;
@@ -16,12 +18,15 @@
     img {
       width: 100%;
       height: 100%;
+      border-radius: 1rem;
     }
   }
   .product-title {
     width: 97%;
     font-size: 1rem;
     padding: 1.2rem 0.3rem;
+    font-family: $font-open;
+
     padding-top: 0.6rem;
     border-bottom: 1px dotted $moda-bronze;
     display: flex;
